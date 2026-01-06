@@ -1,0 +1,15 @@
+from typing import List
+def minimum(values: List[int]) -> int:
+    smallest = 0
+    for i in range(1, len(values)):
+        if values[i] < smallest:
+            smallest = values[i]
+    return smallest
+
+
+
+if __name__ == "__main__":
+    print(minimum([3, 1, 4, 2]))        # expect 1
+    print(minimum([5]))                 # expect 5
+    print(minimum([-5, -1, -3]))        # expect -5
+    print(minimum([0, -1, 10, -20]))    # expect -20
