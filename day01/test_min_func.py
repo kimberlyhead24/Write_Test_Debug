@@ -1,5 +1,5 @@
 import unittest
-from min_func import minimum
+from day01.min_func import minimum
 
 class TestMinimum(unittest.TestCase):
     def test_single_element(self):
