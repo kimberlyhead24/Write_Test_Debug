@@ -1,5 +1,5 @@
 import unittest
-from day03.transactions_debug import total_paid_amount
+from day03.transactions import total_paid_amount
 
 class TestTotalPaidAmount(unittest.TestCase):
     def test_no_transactions(self):
