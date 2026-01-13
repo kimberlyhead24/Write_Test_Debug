@@ -1,5 +1,5 @@
 import unittest
-from day04.parser_debug import parse_user
+from day04.parser import parse_user
 
 class TestParseUser(unittest.TestCase):
     def test_valid_simple_line(self):
