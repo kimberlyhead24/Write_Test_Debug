@@ -26,7 +26,7 @@ def is_spam(number: str) -> bool:
 
     count = 1
     
-    for  previous, current in zip(digit_string, digit_sting[1:]):
+    for  previous, current in zip(digit_string, digit_string[1:]):
         if current == previous:
             count += 1
             if count >= 4:
