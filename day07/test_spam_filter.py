@@ -28,6 +28,12 @@ class TestSpamFilter(unittest.TestCase):
 
     def test_notSpam_repeatingDigits(self):
         self.assertFalse(is_spam("+08 (309) (555-3254)"))
+
+    def test_notSpam_areaCodeLowerBoundary(self):
+        self.assertFalse(is_spam("+0 (200) 234-0182"))
+
+    def test_notSpam_areaCodeHigherBoundary(self):
+        self.assertFalse(is_spam("+0 (900) 234-0182"))
     
 
 
