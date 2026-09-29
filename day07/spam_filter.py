@@ -1,48 +1,37 @@
 import re
-def is_spam(number):
-    spam = False
+def is_spam(number: str) -> bool:
+ 
+    # Pattern to match basic structure and group only the digits
+    pattern = r"\+(0[0-9]?)\s\((\d{3})\)\s(\d{3})-(\d{4})"
+    match = re.fullmatch(pattern, number)
+    
+    if not match:
+        return True
 
-    # Pattern to match basic structure
-    full_pattern = r"\+0[0-9]?\s\(\d{3}\)\s\d{3}-\d{4}"
-
-    if not re.fullmatch(full_pattern, number):
-        spam = True
-        return spam
-
-    # Section out the number except we are done with couuntry code
-    parts = number.split()
-
-    area_code = parts[1] 
-    local_number = parts[2]
+    # giving the groups names
+    country_code, area_code, local_front, local_back = match.groups()
 
     # Find out if area code is below or above the range
-    area_num = int(area_code[1:-1])
-    if area_num < 200 or area_num > 900:
-        spam = True
-        return spam
-
-    # Turning local number into two parts
-    first_part, last_part = local_number.split("-")
+    area_code_num = int(area_code)
+   
+    if not 200 <= area_code_num <= 900:
+        return True
     
     # Checking sum in start of local number is not in end of local number
-    first_part_sum = sum(int(digit) for digit in first_part)
-    if str(first_part_sum) in last_part:
-        spam = True
-        return spam
+    sum_local_front = sum(int(digit) for digit in local_front)
+    if str(sum_local_front) in local_back:
+        return True
 
-    digit_string = re.sub(r"\D", "", number)
+    digit_string = country_code + area_code + local_front + local_back
 
     count = 1
     
-    for idx, char in enumerate(digit_string):
-        if idx == 0:
-            continue
-
-        if char == digit_string[idx - 1]:
+    for  previous, current in zip(digit_string, digit_sting[1:]):
+        if current == previous:
             count += 1
             if count >= 4:
                 return True
         else:
             count = 1
     
-    return spam
+    return False
