@@ -58,7 +58,7 @@ def days_between(start_date: str, end_date: str) -> int:
     
 
 def moon_phase(date_string: str) -> str:
-    phases = {"New", "Waxing", "Full", "Waning"}
+    phases = ("New", "Waxing", "Full", "Waning")
     amount_of_days = days_between("2000-01-06", date_string)
     phase_idx = (amount_of_days % 28) // 7
     
