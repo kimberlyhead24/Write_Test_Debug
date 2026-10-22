@@ -1,5 +1,5 @@
 import unittest
-from day07.user_summary import events_summary
+from user_summary import events_summary
 
 class TestUserSummary(unittest.TestCase):
     def test_missing_user_id(self):
@@ -21,7 +21,17 @@ class TestUserSummary(unittest.TestCase):
        ]
         with self.assertRaises(ValueError):
             events_summary(events)
-    
+
+    def test_invalid_non_integer(self):
+            events = [
+                {"user_id": 2, "type": "click", "duration_ms": 50},
+                {"user_id": 1, "type": "scroll", "duration_ms": 100},
+                {"user_id": 1, "type": "click", "duration_ms": 300},
+                {"user_id": 2, "type": "scroll", "duration_ms": "fast"},   
+           ]
+            with self.assertRaises(ValueError):
+                events_summary(events)
+
     def test_correct_values(self):
         events = [
             {"user_id": 2, "type": "click", "duration_ms": 50},
@@ -86,16 +96,12 @@ class TestUserSummary(unittest.TestCase):
             },    
         ]
         self.assertEqual(events_summary(events), output)
-    def empty_events_list(self):
-        events = [
-            {}
-        ]
-        output = [
-            {}
-        ]
+    def test_empty_events_list(self):
+        events = []
+        output = []
         self.assertEqual(events_summary(events), output)
     
-if "name" == "__main__":
+if __name__ == "__main__":
     unittest.main()
 
 

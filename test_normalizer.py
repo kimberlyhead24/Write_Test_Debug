@@ -1,5 +1,5 @@
 import unittest
-from day06.normalizer import normalize_user
+from normalizer import normalize_user
 
 class TestNormalizerUser(unittest.TestCase):
     def test_valid_payload_bool_active(self):

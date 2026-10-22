@@ -1,5 +1,5 @@
 import unittest
-from day01.min_func import minimum
+from min_func import minimum
 
 class TestMinimum(unittest.TestCase):
     def test_single_element(self):
@@ -17,7 +17,7 @@ class TestMinimum(unittest.TestCase):
     def test_mixed_numbers(self):
         self.assertEqual(minimum([0, -1, 10, -20]), -20)
 
-    def large_mixed_numbers(self):
+    def test_large_mixed_numbers(self):
         self.assertEqual(minimum([-21, 20, 0, 4, 6, 34, 40, 0, -1, -1, 6, 45, -4]), -21)
 
 if __name__ == "__main__":
