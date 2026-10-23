@@ -1,5 +1,5 @@
 import unittest
-from day05.filters_debug import filter_users
+from filters_debug import filter_users
 
 class TestFilterUsers(unittest.TestCase):
     def test_no_filters_returns_all(self):

@@ -1,5 +1,5 @@
 import unittest
-from day07.spam_filter import is_spam
+from spam_filter import is_spam
 
 class TestSpamFilter(unittest.TestCase):
     def test_notSpam_singleCountryCode(self):

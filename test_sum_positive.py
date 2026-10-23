@@ -1,5 +1,5 @@
 import unittest
-from day02.sum_positive import sum_positive
+from sum_positive import sum_positive
 
 
 class TestSumPositive(unittest.TestCase):
